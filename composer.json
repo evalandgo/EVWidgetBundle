@@ -1,0 +1,36 @@
+{
+    "name": "ev/ev-widget-bundle",
+    "type": "symfony-bundle",
+    "description": "Widget bundle for Symfony2 to ...",
+    "keywords": ["widget", "widgetbuilder", "builder", "dashboard", "panel", "symfony2", "bundle"],
+    "homepage": "http://github.com/evalandgo/EVWidgetBundle",
+    "license": "proprietary",
+
+    "authors": [
+        {
+            "name": "Evalandgo Team",
+            "homepage": "http://evalandgo.com"
+        }
+    ],
+
+    "require": {
+        "php":                          ">=5.3.3",
+        "symfony/framework-bundle":     "~2.0",
+        "symfony/security-bundle":      "~2.1",
+        "twig/twig":                    "~1.5"
+    },
+
+    "autoload": {
+        "psr-0": {
+            "EV\\WidgetBundle": ""
+        }
+    },
+
+    "target-dir": "EV/WidgetBundle",
+    
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

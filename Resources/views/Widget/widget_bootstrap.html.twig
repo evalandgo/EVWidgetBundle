@@ -1,0 +1,37 @@
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <span class="glyphicon glyphicon-bookmark"></span>
+        {{ widget.header }}
+        <div class="pull-right">
+            {% for option in widget.options %}
+                {% if option.type == 'button' %}
+                    <button type="button" class="btn btn-default btn-xs">
+                        {{ option.label }}
+                    </button>
+                {% elseif option.type == 'dropdown' %}
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            {{ option.label }} <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                            {% for action in option.actions %}
+                                <li><a href="#">{{ action }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="panel-body">
+        {{ widget.body }}
+    </div>
+
+    {% if widget.footer is not null %}
+        <div class="panel-footer">
+            {{ widget.footer }}
+        </div>
+    {% endif %}
+</div>
