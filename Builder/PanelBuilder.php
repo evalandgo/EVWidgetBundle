@@ -5,6 +5,7 @@ namespace EV\WidgetBundle\Builder;
 use EV\WidgetBundle\Model\Panel;
 use EV\WidgetBundle\Model\PanelElementWidget;
 use EV\WidgetBundle\Model\PanelView;
+use EV\WidgetBundle\Helper\PanelViewHelper;
 
 /**
  * Description of PanelBuilder
@@ -36,7 +37,11 @@ class PanelBuilder {
     }
     
     public function createView() {
-        return new PanelView($this->panel);
+                
+        $panelViewHelper = new PanelViewHelper(new PanelView($this->panel));
+        $panelViewHelper->createLayouts();
+        $panelView = $panelViewHelper->getPanelView();
+        return $panelView;
     }
     
 }

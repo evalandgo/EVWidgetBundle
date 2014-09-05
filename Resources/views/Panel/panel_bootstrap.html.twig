@@ -1,12 +1,13 @@
 
-<div class="row">
-    <div class="col-sm-4">
-        {{ ev_widget_render(panel.elements[0].widget) }}
+{#{{ dump(panelView) }}#}
+
+{% for row in panelView.rows %}
+    <div class="row">
+        {% for column in row.columns %}
+            <div class="col-md-{{ column.width }}">
+                {#TODO : mettre condition sur widget ou custom element#}
+                {{ ev_widget_render(column.element) }}
+            </div>
+        {% endfor %}
     </div>
-    <div class="col-sm-4">
-        {{ ev_widget_render(panel.elements[1].widget) }}
-    </div>
-    <div class="col-sm-4">
-        {{ ev_widget_render(panel.elements[2].widget) }}
-    </div>
-</div>
+{% endfor %}

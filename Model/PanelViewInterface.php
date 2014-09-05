@@ -11,6 +11,8 @@ interface PanelViewInterface {
     
     public function getPanel();
     
+    public function addRow(PanelViewRow $panelViewRow);
+    
     public function getRows();
 }
 

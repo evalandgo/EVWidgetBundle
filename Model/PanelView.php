@@ -2,6 +2,7 @@
 
 namespace EV\WidgetBundle\Model;
 
+
 /**
  * Description of PanelView
  *
@@ -11,7 +12,7 @@ class PanelView implements PanelViewInterface/*implements Iterator...*/{
     
     protected $panel;
     
-    protected $rows;
+    protected $rows = array();
     
     public function __construct(Panel $panel) {
         $this->panel = $panel;
@@ -24,11 +25,17 @@ class PanelView implements PanelViewInterface/*implements Iterator...*/{
     }
     
     public function getPanel() {
-        return $this->Panel;
+        return $this->panel;
+    }
+    
+    public function addRow(PanelViewRow $panelViewRow) {
+        $this->rows[] = $panelViewRow;
+        
+        return $this;
     }
     
     public function getRows() {
-        
+        return $this->rows;
     }
     
 }
