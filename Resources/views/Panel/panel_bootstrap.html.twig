@@ -1,2 +1,12 @@
 
-{{ dump(panel) }}
+<div class="row">
+    <div class="col-sm-4">
+        {{ ev_widget_render(panel.elements[0].widget) }}
+    </div>
+    <div class="col-sm-4">
+        {{ ev_widget_render(panel.elements[1].widget) }}
+    </div>
+    <div class="col-sm-4">
+        {{ ev_widget_render(panel.elements[2].widget) }}
+    </div>
+</div>

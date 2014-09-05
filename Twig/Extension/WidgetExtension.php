@@ -4,6 +4,7 @@ namespace EV\WidgetBundle\Twig\Extension;
 
 use EV\WidgetBundle\Model\WidgetInterface;
 use EV\WidgetBundle\Model\PanelInterface;
+use EV\WidgetBundle\Helper\PanelHelper;
 
 /**
  * Description of WidgetExtension
@@ -13,9 +14,6 @@ use EV\WidgetBundle\Model\PanelInterface;
 class WidgetExtension extends \Twig_Extension {
     
     protected $environment;
-    
-    public function __construct() {
-    }
     
     public function initRuntime(\Twig_Environment $environment)
     {
@@ -35,9 +33,9 @@ class WidgetExtension extends \Twig_Extension {
         return $this->environment->render('EVWidgetBundle:Widget:widget_bootstrap.html.twig', array('widget' => $widget));
     }
     
-    public function renderPanel(PanelInterface $panel) {
-
-        return $this->environment->render('EVWidgetBundle:Panel:Panel_bootstrap.html.twig', array('panel' => $panel));
+    public function renderPanel(PanelViewInterface $panel) {
+        
+        return $this->environment->render('EVWidgetBundle:Panel:panel_bootstrap.html.twig', array('panel' => $panel));
     }
     
     public function getName()

@@ -2,7 +2,7 @@
 
 namespace EV\WidgetBundle\Factory;
 
-use EV\WidgetBundle\Model\Panel;
+use EV\WidgetBundle\Builder\PanelBuilder;
 
 /**
  * Description of PanelFactory
@@ -11,13 +11,9 @@ use EV\WidgetBundle\Model\Panel;
  */
 class PanelFactory {
     
-    /*public function createPanel() {
-        
+    public function createPanelBuilder() {
+        return new PanelBuilder();
     }
-    
-    public function createPanelWithWidgets() {
-        
-    }*/
     
 }
 

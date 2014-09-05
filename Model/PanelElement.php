@@ -3,17 +3,20 @@
 namespace EV\WidgetBundle\Model;
 
 /**
- * Description of WidgetPanel
+ * Description of PanelElement
  *
  * @author Micka
  */
-class WidgetPanel {
+abstract class PanelElement {
     
     protected $width;
     
     protected $position;
     
-    protected $widget;
+    public function __construct($width, $position) {
+        $this->width = $width;
+        $this->position = $position;
+    }
     
     public function setWidth($width) {
         $this->width = $width;
@@ -33,16 +36,6 @@ class WidgetPanel {
     
     public function getPosition() {
         return $this->position;
-    }
-    
-    public function setWidget(Widget $widget) {
-        $this->widget = $widget;
-        
-        return $this;
-    }
-    
-    public function getWidget() {
-        return $this->widget;
     }
     
 }

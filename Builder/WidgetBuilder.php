@@ -58,7 +58,7 @@ class WidgetBuilder {
         
         $params = array_replace($defaultParams, $params);
         
-        $widgetOptionDropdown = new widgetOptionDropdown();
+        $widgetOptionDropdown = new WidgetOptionDropdown();
         $widgetOptionDropdown->setLabel($params['label']);
         
         foreach ($params['actions'] as $action) {
