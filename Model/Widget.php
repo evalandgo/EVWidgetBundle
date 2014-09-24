@@ -69,6 +69,14 @@ class Widget implements WidgetInterface, PanelElementable {
         return $this->options;
     }
     
+    public function getTwigExensionName() {
+        return 'ev_widget';
+    }
+    
+    public function getRenderMethod() {
+        return 'renderWidget';
+    }
+    
 }
 
 ?>

@@ -3,8 +3,6 @@
 namespace EV\WidgetBundle\Twig\Extension;
 
 use EV\WidgetBundle\Model\WidgetInterface;
-use EV\WidgetBundle\Model\PanelInterface;
-use EV\WidgetBundle\Model\PanelViewInterface;
 
 /**
  * Description of WidgetExtension

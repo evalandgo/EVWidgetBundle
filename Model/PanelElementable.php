@@ -8,7 +8,9 @@ namespace EV\WidgetBundle\Model;
  */
 interface PanelElementable {
     
+    public function getTwigExensionName();
     
+    public function getRenderMethod();
     
 }
 

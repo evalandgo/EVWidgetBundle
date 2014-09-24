@@ -28,7 +28,7 @@ class PanelViewColumn {
         return $this->width;
     }
     
-    public function setElement($element) {
+    public function setElement(PanelElementable $element) {
         $this->element = $element;
         
         return $this;

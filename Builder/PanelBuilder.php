@@ -38,17 +38,9 @@ class PanelBuilder {
     
     public function createView() {
         
-        /*$panelViewHandler = new PanelViewHandler();
-        $panelView = $panelViewHandler->createViewWithPanel($this->panel);*/
-        
         $panelViewHandler = new PanelViewHandler(new PanelView($this->panel));
         $panelViewHandler->createLayouts();
         $panelView = $panelViewHandler->getPanelView();
-        
-                
-        /*$panelViewHelper = new PanelViewHelper(new PanelView($this->panel));
-        $panelViewHelper->createLayouts();
-        $panelView = $panelViewHelper->getPanelView();*/
         
         return $panelView;
     }
