@@ -16,13 +16,13 @@ class PanelElementWidget extends PanelElement {
         $this->widget = $widget;
     }
     
-    public function setWidget(Widget $widget) {
+    public function setElement(PanelElementable $widget) {
         $this->widget = $widget;
         
         return $this;
     }
     
-    public function getWidget() {
+    public function getElement() {
         return $this->widget;
     }
     

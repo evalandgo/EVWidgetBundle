@@ -7,7 +7,7 @@ namespace EV\WidgetBundle\Model;
  *
  * @author Micka
  */
-class Widget implements WidgetInterface {
+class Widget implements WidgetInterface, PanelElementable {
     
     protected $header;
     

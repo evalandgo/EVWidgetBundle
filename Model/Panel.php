@@ -9,34 +9,34 @@ namespace EV\WidgetBundle\Model;
  */
 class Panel implements PanelInterface {
     
-    protected $totalColumns = 3;
+    //protected $totalColumns = 3;
     
-    protected $elements = array();
+    protected $panelElements = array();
     
-    public function addElement(PanelElement $element) {
-        $this->elements[] = $element;
+    public function addPanelElement(PanelElement $panelElements) {
+        $this->panelElements[] = $panelElements;
         
         return $this;
     }
     
-    public function getElements() {
-        usort($this->elements, function($a, $b) {
+    public function getPanelElements() {
+        usort($this->panelElements, function($a, $b) {
             if ($a->getPosition() == $b->getPosition()) {
                 return 0;
             }
             return ($a->getPosition() < $b->getPosition()) ? -1 : 1;
         });
         
-        return $this->elements;
+        return $this->panelElements;
     }
     
-    public function setTotalColumns($totalColumns) {
+    /*public function setTotalColumns($totalColumns) {
         $this->totalColumns = $totalColumns;
     }
     
     public function getTotalColumns() {
         return $this->totalColumns;
-    }
+    }*/
     
 }
 

@@ -7,11 +7,11 @@ use EV\WidgetBundle\Model\PanelInterface;
 use EV\WidgetBundle\Model\PanelViewInterface;
 
 /**
- * Description of WidgetExtension
+ * Description of PanelExtension
  *
  * @author Micka
  */
-class WidgetExtension extends \Twig_Extension {
+class PanelExtension extends \Twig_Extension {
     
     protected $environment;
     
@@ -23,18 +23,18 @@ class WidgetExtension extends \Twig_Extension {
     public function getFunctions()
     {
         return array(
-            'ev_widget_render' => new \Twig_Function_Method($this, 'renderWidget', array('is_safe' => array('html'))),
+            'ev_panel_render' => new \Twig_Function_Method($this, 'renderPanel', array('is_safe' => array('html'))),
         );
     }
     
-    public function renderWidget(WidgetInterface $widget) {
+    public function renderPanel(PanelViewInterface $panelView) {
         
-        return $this->environment->render('EVWidgetBundle:Widget:widget_bootstrap.html.twig', array('widget' => $widget));
+        return $this->environment->render($panelView->getTemplate(), array('panelView' => $panelView));
     }
     
     public function getName()
     {
-        return 'ev_widget';
+        return 'ev_panel';
     }
     
 }

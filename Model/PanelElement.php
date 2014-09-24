@@ -38,6 +38,10 @@ abstract class PanelElement {
         return $this->position;
     }
     
+    abstract public function setElement(PanelElementable $element);
+    
+    abstract public function getElement();
+    
 }
 
 ?>

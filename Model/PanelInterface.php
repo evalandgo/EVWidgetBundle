@@ -8,13 +8,13 @@ namespace EV\WidgetBundle\Model;
  */
 interface PanelInterface {
     
-    public function addElement(PanelElement $element);
+    public function addPanelElement(PanelElement $element);
     
-    public function getElements();
+    public function getPanelElements();
     
-    public function setTotalColumns($totalColumns);
+    /*public function setTotalColumns($totalColumns);
     
-    public function getTotalColumns();
+    public function getTotalColumns();*/
     
 }
 
