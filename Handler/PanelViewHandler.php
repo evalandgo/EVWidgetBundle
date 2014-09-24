@@ -23,20 +23,15 @@ class PanelViewHandler {
     
     public function createLayouts() {
 
-        // parcourir les elements
         foreach($this->panelView->getPanel()->getPanelElements() as $panelElement) {
             
-            // vérifier si une taille n'est pas supérieur à 3
             if ( $panelElement->getWidth() > $this->panelView->getTotalColumns() ) {
                 throw new \Exception('The size of an PanelElement is greater than the number of possible columns');
             }
             
-            // push chaque element dans le panel
             $this->pushPanelElementInView($panelElement);
         }
-            
         
-        // retourner this
         return $this;
     }
     
@@ -45,13 +40,8 @@ class PanelViewHandler {
     }
     
     protected function pushPanelElementInView(PanelElement $panelElement) {
-        //$row = $this->panelView->getLastRow();
         
-        if ( $this->panelView->getLastRow() === false ) {
-            $this->addRowInView();
-        }
-        
-        if ($panelElement->getWidth() > $this->getRemainingSpaceInRow($this->panelView->getLastRow())) {
+        if ( $this->panelView->getLastRow() === false || $panelElement->getWidth() > $this->getRemainingSpaceInRow($this->panelView->getLastRow()) ) {
             $this->addRowInView();
         }
         
