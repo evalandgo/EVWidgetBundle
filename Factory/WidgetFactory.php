@@ -4,6 +4,7 @@ namespace EV\WidgetBundle\Factory;
 
 
 use EV\WidgetBundle\Builder\WidgetBuilder;
+use EV\WidgetBundle\WidgetType\AbstractWidgetType;
 
 /**
  * Description of WidgetFactory
@@ -16,6 +17,12 @@ class WidgetFactory {
         return new WidgetBuilder();
     }
     
+    public function createWidgetFromType(AbstractWidgetType $widgetType) {
+        
+        $widgetBuilder = $widgetType->buildWidget(new WidgetBuilder());
+        
+        return $widgetBuilder;
+    }
 }
 
 ?>
