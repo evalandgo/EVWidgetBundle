@@ -1,7 +1,7 @@
 {
     "name": "ev/ev-widget-bundle",
     "type": "symfony-bundle",
-    "description": "Widget bundle for Symfony2 to ...",
+    "description": "Widget bundle provides object oriented widgets and dashboards.",
     "keywords": ["widget", "widgetbuilder", "builder", "dashboard", "panel", "symfony2", "bundle"],
     "homepage": "http://github.com/evalandgo/EVWidgetBundle",
     "license": "proprietary",
