@@ -20,7 +20,6 @@ class PanelBuilder {
         $this->panel = new Panel();
     }
     
-    // TODO : modifier cette méthode pour accépter des PanelElement custom
     public function addPanelElement($params) {
         $defaultParams = array(
             'width' => null,
