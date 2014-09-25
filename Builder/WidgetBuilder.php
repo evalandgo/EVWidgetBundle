@@ -19,6 +19,12 @@ class WidgetBuilder {
         $this->widget = new Widget($name);
     }
     
+    public function setCustomParameters($parameters) {
+        $this->widget->setCustomParameters($parameters);
+        
+        return $this;
+    }
+    
     public function addLayouts($layouts = array()) {
         $defaultLayouts = array(
             'header' => null,

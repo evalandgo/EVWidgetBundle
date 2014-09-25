@@ -1,7 +1,9 @@
-
-<div id="{{ widget.name }}" class="panel panel-info">
+<div id="{{ widget.name }}" class="panel {% if widget.customParameters.widgetClass is defined %}{{ widget.customParameters.widgetClass }}{% endif %}">
+    
     <div class="panel-heading">
+        
         {{ widget.header|raw }}
+        
         <div class="pull-right">
             {% for option in widget.options %}
                 {% if option.type == 'button' %}
@@ -33,4 +35,5 @@
             {{ widget.footer }}
         </div>
     {% endif %}
+    
 </div>

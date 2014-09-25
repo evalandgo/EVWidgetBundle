@@ -19,6 +19,8 @@ class Widget implements WidgetInterface, PanelElementable {
     
     protected $options = array();
     
+    protected $customParameters = array();
+    
     public function __construct($name = null) {
         $this->name = $name;
     }
@@ -79,6 +81,16 @@ class Widget implements WidgetInterface, PanelElementable {
     
     public function getOptions() {
         return $this->options;
+    }
+    
+    public function setCustomParameters($parameters) {
+        $this->customParameters = $parameters;
+        
+        return $this;
+    }
+    
+    public function getCustomParameters() {
+        return $this->customParameters;
     }
     
     public function getTwigExensionName() {
