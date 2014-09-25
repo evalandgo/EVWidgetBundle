@@ -80,7 +80,7 @@ public function indexAction() {
 ```
 
 In TWIG :
-```html
+```jinja
 {# Acme\MainBundle\Resources\view\Widget\index.html.twig #}
 
 <div class="container">
