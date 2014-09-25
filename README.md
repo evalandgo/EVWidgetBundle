@@ -81,7 +81,7 @@ public function indexAction() {
 
 In TWIG :
 ```html
-// Acme\MainBundle\Resources\view\Widget\index.html.twig
+{# Acme\MainBundle\Resources\view\Widget\index.html.twig #}
 
 <div class="container">
     <h1>Widget</h1>
@@ -201,8 +201,8 @@ public function indexAction() {
 ```
 
 In TWIG
-```html
-// Acme\MainBundle\Resources\view\Panel\index.html.twig
+```jinja
+{# Acme\MainBundle\Resources\view\Panel\index.html.twig #}
 
 <div class="container">
     <h1>Panel</h1>
