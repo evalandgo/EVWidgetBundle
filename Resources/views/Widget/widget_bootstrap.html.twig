@@ -1,22 +1,21 @@
 
-<div class="panel panel-info">
+<div id="{{ widget.name }}" class="panel panel-info">
     <div class="panel-heading">
-        <span class="glyphicon glyphicon-bookmark"></span>
-        {{ widget.header }}
+        {{ widget.header|raw }}
         <div class="pull-right">
             {% for option in widget.options %}
                 {% if option.type == 'button' %}
                     <button type="button" class="btn btn-default btn-xs">
-                        {{ option.label }}
+                        {{ option.label|raw }}
                     </button>
                 {% elseif option.type == 'dropdown' %}
                     <div class="btn-group">
                         <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                            {{ option.label }} <span class="caret"></span>
+                            {{ option.label|raw }} <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-menu-right" role="menu">
                             {% for action in option.actions %}
-                                <li><a href="#">{{ action }}</a></li>
+                                <li><a href="#">{{ action|raw }}</a></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -26,7 +25,7 @@
     </div>
 
     <div class="panel-body">
-        {{ widget.body }}
+        {{ widget.body|raw }}
     </div>
 
     {% if widget.footer is not null %}

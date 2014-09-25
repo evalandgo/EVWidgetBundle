@@ -15,8 +15,8 @@ class WidgetBuilder {
     
     protected $widget;
     
-    public function __construct() {
-        $this->widget = new Widget();
+    public function __construct($name = null) {
+        $this->widget = new Widget($name);
     }
     
     public function addLayouts($layouts = array()) {

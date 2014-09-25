@@ -13,13 +13,13 @@ use EV\WidgetBundle\WidgetType\AbstractWidgetType;
  */
 class WidgetFactory {
         
-    public function createWidgetBuilder() {
-        return new WidgetBuilder();
+    public function createWidgetBuilder($name = null) {
+        return new WidgetBuilder($name);
     }
     
     public function createWidgetFromType(AbstractWidgetType $widgetType) {
         
-        $widgetBuilder = $widgetType->buildWidget(new WidgetBuilder());
+        $widgetBuilder = $widgetType->buildWidget(new WidgetBuilder($widgetType->getName()));
         
         return $widgetBuilder;
     }

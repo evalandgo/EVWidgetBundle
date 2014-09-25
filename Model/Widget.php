@@ -9,6 +9,8 @@ namespace EV\WidgetBundle\Model;
  */
 class Widget implements WidgetInterface, PanelElementable {
     
+    protected $name;
+    
     protected $header;
     
     protected $body;
@@ -17,9 +19,19 @@ class Widget implements WidgetInterface, PanelElementable {
     
     protected $options = array();
     
-    /*public function __construct() {
+    public function __construct($name = null) {
+        $this->name = $name;
+    }
+    
+    public function setName($name) {
+        $this->name = $name;
         
-    }*/
+        return $this;
+    }
+    
+    public function getName() {
+        return $this->name;
+    }
     
     public function setHeader($header) {
         $this->header = $header;
