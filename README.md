@@ -39,11 +39,16 @@ public function registerBundles()
 
 ## Configuration
 
+In config.yml
+```yaml
+...
+```
 
 ## Widget's usage example
 
 ### Basic usage
 
+In controller :
 ```php
 // Acme\MainBundle\Controller\DashboardController.php
 
@@ -74,7 +79,8 @@ public function indexAction() {
 }
 ```
 
-```twig
+In TWIG :
+```html
 // Acme\MainBundle\Resources\view\Widget\index.html.twig
 
 <div class="container">
@@ -89,6 +95,7 @@ public function indexAction() {
 
 ### With a WidgetType object
 
+In a WidgetType object :
 ```php
 // Acme\MainBundle\Widget\NotificationWidgetType.php
 
@@ -135,6 +142,7 @@ class NotificationWidgetType extends AbstractWidgetType {
 }
 ```
 
+In controller
 ```php
 // Acme\MainBundle\Controller\DashboardController.php
 
@@ -157,6 +165,7 @@ public function indexAction() {
 
 ### Basic usage
 
+In controller
 ```php
 // Acme\MainBundle\Controller\DashboardController.php
 
@@ -173,15 +182,15 @@ public function indexAction() {
     $factoryPanel = $this->container->get('ev_widget.factory.panel');
 
     $panelBuilder = $factoryPanel->createPanelBuilder()
-            ->addElementWidget(array(
+            ->addPanelElement(array(
                 'width' => 6,
                 'position' => 1,
-                'widget' => $widget1Builder->createView()
+                'element' => $widget1Builder->createView()
             ))
-            ->addElementWidget(array(
+            ->addPanelElement(array(
                 'width' => 6,
                 'position' => 2,
-                'widget' => $widget2Builder->createView()
+                'element' => $widget2Builder->createView()
             ));
 
 
@@ -191,7 +200,8 @@ public function indexAction() {
 }
 ```
 
-```twig
+In TWIG
+```html
 // Acme\MainBundle\Resources\view\Panel\index.html.twig
 
 <div class="container">

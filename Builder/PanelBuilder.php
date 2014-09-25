@@ -3,7 +3,7 @@
 namespace EV\WidgetBundle\Builder;
 
 use EV\WidgetBundle\Model\Panel;
-use EV\WidgetBundle\Model\PanelElementWidget;
+use EV\WidgetBundle\Model\PanelElement;
 use EV\WidgetBundle\Model\PanelView;
 use EV\WidgetBundle\Handler\PanelViewHandler;
 
@@ -20,18 +20,19 @@ class PanelBuilder {
         $this->panel = new Panel();
     }
     
-    public function addElementWidget($params) {
+    // TODO : modifier cette méthode pour accépter des PanelElement custom
+    public function addPanelElement($params) {
         $defaultParams = array(
             'width' => null,
             'position' => null,
-            'widget' => null
+            'element' => null
         );
         
         $params = array_replace($defaultParams, $params);
         
-        $panelElementWidget = new PanelElementWidget($params['width'], $params['position'], $params['widget']);
+        $panelElement = new PanelElement($params['width'], $params['position'], $params['element']);
         
-        $this->panel->addPanelElement($panelElementWidget);
+        $this->panel->addPanelElement($panelElement);
         
         return $this;
     }

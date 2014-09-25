@@ -7,15 +7,18 @@ namespace EV\WidgetBundle\Model;
  *
  * @author Micka
  */
-abstract class PanelElement {
+class PanelElement {
     
     protected $width;
     
     protected $position;
     
-    public function __construct($width, $position) {
+    protected $element;
+    
+    public function __construct($width, $position, $element) {
         $this->width = $width;
         $this->position = $position;
+        $this->element = $element;
     }
     
     public function setWidth($width) {
@@ -38,9 +41,15 @@ abstract class PanelElement {
         return $this->position;
     }
     
-    abstract public function setElement(PanelElementable $element);
+    public function setElement(PanelElementable $element) {
+        $this->element = $element;
+        
+        return $this;
+    }
     
-    abstract public function getElement();
+    public function getElement() {
+        return $this->element;
+    }
     
 }
 
