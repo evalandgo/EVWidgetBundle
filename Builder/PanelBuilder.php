@@ -20,7 +20,7 @@ class PanelBuilder {
         $this->panel = new Panel();
     }
     
-    public function addPanelElement($params) {
+    public function addPanelElement($params) {        
         $defaultParams = array(
             'width' => null,
             'position' => null,
