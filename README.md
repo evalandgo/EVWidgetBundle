@@ -160,6 +160,144 @@ public function indexAction() {
 }
 ```
 
+### Advanced usage with a WidgetType object
+
+In main controller
+```php
+// Acme\MainBundle\Controller\DashboardController.php
+
+public function contentAction()
+{
+    $factoryWidget = $this->container->get('ev_widget.factory.widget');
+
+    $notificationWidget = $factoryWidget->createWidgetFromType($this->container->get('acme_main.widget.notification'));
+
+    return array(
+        'widget' => $notificationWidget->createView(),
+    );
+}
+```
+
+In services.xml
+```xml
+<!-- Acme\MainBundle\Resources\config\services.xml -->
+
+<services>
+        
+    <service id="acme_main.controller.widget" class="Acme\MainBundle\Controller\WidgetController">
+        <call method="setContainer">
+            <argument type="service" id="service_container" />
+        </call>
+    </service>
+    
+    <service id="acme_main.widget.notification" class="Acme\MainBundle\Widget\NotificationWidgetType">
+        <argument type="service" id="acme_main.controller.widget" />
+    </service>
+    
+</services>
+```
+
+In a WidgetType object :
+```php
+// Acme\MainBundle\Widget\NotificationWidgetType.php
+
+namespace Acme\MainBundle\Widget;
+
+use EV\WidgetBundle\WidgetType\AbstractWidgetType;
+use EV\WidgetBundle\Builder\WidgetBuilder;
+use Acme\MainBundle\Controller\WidgetController;
+
+class NotificationWidgetType extends AbstractWidgetType {
+    
+    protected $widgetController;
+
+    public function __construct(WidgetController $widgetController) {
+        $this->widgetController = $widgetController;
+    }
+
+    public function buildWidget(WidgetBuilder $widgetBuilder) {
+
+        $widgetBuilder->setCustomParameters(array(
+                            'widgetClass' => 'panel-info'
+                        ));
+
+        $widgetBuilder->addLayouts($this->widgetController->notificationLayouts());
+
+        return $widgetBuilder;
+    }
+    
+    public function getName() {
+        return 'widget_notification';
+    }
+    
+}
+```
+
+In widget controller
+```php
+// Acme\MainBundle\Controller\WidgetController.php
+
+namespace Acme\MainBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class WidgetController extends Controller {
+    
+    public function notificationLayouts() {
+        
+        $notificationManager = $this->container->get('qwesteo_notification.manager');
+        
+        $notifications = $notificationManager->getNotifications();
+        
+        return $this->renderLayouts(
+            'AcmeMainBundle:Widget:notification.html.twig', 
+            array(
+                'notifications' => $notifications
+            )
+        );
+    }
+    
+    
+    protected function renderLayouts($name, $context) {
+        
+        $layouts = array();
+        
+        $templateContent = $this->container->get('twig')->loadTemplate($name);
+        $blocknames = $templateContent->getBlockNames();
+        foreach($blocknames as $blockname) {
+            $layouts[$blockname] = $templateContent->renderBlock($blockname, $context);
+        }
+        
+        return $layouts;
+    }
+    
+}
+```
+
+In widget notification TWIG
+```jinja
+{# Acme\MainBundle\Resources\view\Widget\notification.html.twig #}
+
+{% block header %}
+
+    Notifications
+    
+{% endblock %}
+
+{% block body %}
+    
+    <table class="table">
+        {% for notification in notifications %}
+            <tr>
+                <td>
+                    {{ notification.title }}
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+{% endblock %}
+```
 
 ## Panel's usage example
 
