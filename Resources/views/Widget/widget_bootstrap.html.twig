@@ -1,34 +1,38 @@
 <div id="{{ widget.name }}" class="panel {% if widget.customParameters.widgetClass is defined %}{{ widget.customParameters.widgetClass }}{% endif %}">
     
-    <div class="panel-heading">
-        
-        {{ widget.header|raw }}
-        
-        <div class="pull-right">
-            {% for option in widget.options %}
-                {% if option.type == 'button' %}
-                    <button type="button" class="btn btn-default btn-xs">
-                        {{ option.label|raw }}
-                    </button>
-                {% elseif option.type == 'dropdown' %}
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                            {{ option.label|raw }} <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                            {% for action in option.actions %}
-                                <li><a href="#">{{ action|raw }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-    </div>
+    {% if widget.heading is not null %}
+        <div class="panel-heading">
 
-    <div class="panel-body">
-        {{ widget.body|raw }}
-    </div>
+            {{ widget.header|raw }}
+
+            <div class="pull-right">
+                {% for option in widget.options %}
+                    {% if option.type == 'button' %}
+                        <button type="button" class="btn btn-default btn-xs">
+                            {{ option.label|raw }}
+                        </button>
+                    {% elseif option.type == 'dropdown' %}
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                {{ option.label|raw }} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-right" role="menu">
+                                {% for action in option.actions %}
+                                    <li><a href="#">{{ action|raw }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    {% if widget.body is not null %}
+        <div class="panel-body">
+            {{ widget.body|raw }}
+        </div>
+    {% endif %}
 
     {% if widget.footer is not null %}
         <div class="panel-footer">
