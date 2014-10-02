@@ -4,7 +4,7 @@
 {% for row in panelView.rows %}
     <div class="row">
         {% for column in row.columns %}
-            <div class="col-sm-{{ column.width }}">
+            <div class="col-lg-{{ column.width }} col-md-{{ column.width }}">
                 {{ ev_panel_element_render(column.element) }}
             </div>
         {% endfor %}
